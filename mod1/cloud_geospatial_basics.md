@@ -5,7 +5,7 @@
 2. [Key Open-Source Technologies](key-open-source-technologies)
 3. [XArray](#xarray-1)
 4. [Spatio-Temporal Asset Catalog (STAC)](#spatio-temporal-asset-catalog-stac)
-5. [Dask](#dask)
+5. [Dask](#dask-1)
 6. [Coiled](#coiled)
 
 ## Cloud Native Remote Sensing
@@ -139,3 +139,18 @@ Meanwhile, query results from STAC API catalogs can be loaded directly to XArray
 First, `odc-stac` returns an `xarray.Dataset`, with each band in a different variable. Meanwhile, `stackstac` returns an `xarray.DataArray`, with all the bands combined into a single array. Moreover, `odc-stac` has sensible defaults and more tooling available to make data processing easier.
 
 A deeper discussion is available at [comparing odc-stac vs stackstack](https://discourse.pangeo.io/t/comparing-odc-stac-load-and-stackstac-for-raster-composite-workflow/4097/8). This workshop will use `odc-stac`, but either option is fine.
+
+## Dask
+
+Dask is an open-source Python package for parallel computing. It allows the processing of big data by implementing distributed computation for widely used Python libraries (`pandas`, `geopandas`, `xarray`, etc.).
+
+Dask is flexible and can be run on many environments:
+- On your own computer, leveraging one, multiple, or all processing cores
+- On your own private cluster
+- On a cloud cluster
+
+## Coiled
+
+Coiled is a platform that allows you to easily set up cloud infrastructure for distributed processing. It provides a Python package and a notebook service, making it very easy to scale `xarray` + `dask` workflows to process large volumes of data.
+
+It suupports all major cloud platforms (GCP, AWS, Azure), and seamlessly sets up a Dask cluster that you can access via a Jupyter notebook from your own machine.
