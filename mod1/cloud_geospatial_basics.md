@@ -55,3 +55,42 @@ Development of new data formats and advances in open-source technologies now all
 > - Web-based interactive development environment
 > - Support for deploying custom computing environments for multiple users
 
+## XArray
+
+### What is XArray?
+
+XArray is a Python package for working with multidimensional arrays. It supports vectorized operations on arrays, resulting in magnitudes of faster processing over iteration.
+
+It is particularly suited for working with multi-band and/or time-series rasters (earth observation and climate datasets).
+
+XArray integrates tightly with `dask`, which allows one to scale raster data processing using parallel computing. It is also at the center of a fast-evolving ecosystem around spatial extensions (`rioxarray`, `xarray-spatial`, `xr-scipy`, etc.).
+
+### Basic Terminology
+
+- #### Variables
+
+> This is similar to a band in a raster dataset. Each variable contains an array of values.
+
+- #### Dimensions
+
+> This is similar to the number of array axes. A grid of pixels (lat and lon) at multiple time internals with multiple variables is a 4D dataset.
+
+- #### Coordinates
+
+> These are the labels for values in each dimension. We have labels for lat, lon, and time.
+
+- #### Attributes
+
+> This is the metadata associated with the dataset.
+
+Below is the diagram for a multi-band raster data at a single time interval.
+
+![A single multi-band image](imgs/multiband_image.png)
+
+Let's expand the example to include a time-series of images:
+
+![A time-series of images](imgs/time_series.png)
+
+For this time-series of multi-band images, the  `dimensions` are: lon, lat, time, and variables. The `variables` correspond to the bands of each image (blue, green, red, and NIR), while the rest of the dimensions are `coordinates` indicating location across space (lat and lon) and time.
+
+![Dimensions, variables, and coordinates](imgs/dims_vars_coords.png)
