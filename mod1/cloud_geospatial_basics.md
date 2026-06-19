@@ -67,9 +67,7 @@ Development of new data formats and advances in open-source technologies now all
 
 ### What is XArray?
 
-XArray is a Python package for working with multidimensional arrays. It supports vectorized operations on arrays, resulting in magnitudes of faster processing over iteration.
-
-It is particularly suited for working with multi-band and/or time-series rasters (earth observation and climate datasets).
+XArray is a Python package for working with multidimensional arrays. It supports vectorized operations on arrays, resulting in magnitudes of faster processing over iteration. It is particularly suited for working with multi-band and/or time-series rasters (earth observation and climate datasets).
 
 XArray integrates tightly with `dask`, which allows one to scale raster data processing using parallel computing. It is also at the center of a fast-evolving ecosystem around spatial extensions (`rioxarray`, `xarray-spatial`, `xr-scipy`, etc.).
 
@@ -109,9 +107,7 @@ For this time-series of multi-band images, the  `dimensions` are: lon, lat, time
 
 Spatio-Temporal Asset Catalog (STAC) is an open standard for specifying and querying geospatial data.
 
-Data providers can share catalogs of satellite imagery, climate datasets, LIDAR data, vector data, etc., and specify asset metadata according to the STAC specifications.
-
-All STAC catalogs can be queried to find matching assets by time, location, or metadata.
+Data providers can share catalogs of satellite imagery, climate datasets, LIDAR data, vector data, etc., and specify asset metadata according to the STAC specifications. All STAC catalogs can be queried to find matching assets by time, location, or metadata.
 
 There are many open-source packages available in Python to query STAC catalogs.
 
@@ -134,20 +130,12 @@ There are two types of STAC catalogs:
 
 ### Reading Data from Static Catalogs
 
-One can iterate through a static `Collection` and find `STAC Items`. 
-
-Each `STAC Item` has references to `Assets`, each of which is typically a set of cloud-optimized GeoTIFFs (COGs) when working with EO data. 
-
-These assets can be directly read using `rioxarray`, which creates an XArray dataset.
+One can iterate through a static `Collection` and find `STAC Items`. Each `STAC Item` has references to `Assets`, each of which is typically a set of cloud-optimized GeoTIFFs (COGs) when working with EO data. These assets can be directly read using `rioxarray`, which creates an XArray dataset.
 
 ### Reading Data from STAC API Catalogs
 
-Meanwhile, query results from STAC API catalogs can be loade directly to XArray.
+Meanwhile, query results from STAC API catalogs can be loaded directly to XArray. There are two popular options for this: `stackstac` and `odc-stac`. There are many small differences in how these two packages load data. 
 
-There are two popular options for this: `stackstac` and `odc-stac`. There are many small differences in how these two packages load data.
-
-First, `odc-stac` returns an `xarray.Dataset`, with each band in a different variable. Meanwhile, `stackstac` returns an `xarray.DataArray`, with all the bands combined into a single array.
-
-Moreover, `odc-stac` has sensible defaults and more tooling available to make data processing easier.
+First, `odc-stac` returns an `xarray.Dataset`, with each band in a different variable. Meanwhile, `stackstac` returns an `xarray.DataArray`, with all the bands combined into a single array. Moreover, `odc-stac` has sensible defaults and more tooling available to make data processing easier.
 
 A deeper discussion is available at [comparing odc-stac vs stackstack](https://discourse.pangeo.io/t/comparing-odc-stac-load-and-stackstac-for-raster-composite-workflow/4097/8). This workshop will use `odc-stac`, but either option is fine.
